@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login/Registration</title>
+    {% load staticfiles %}
+	  <link rel="stylesheet" href="{% static 'logreg/css/index_style.css' %}">
+
+</head>
+<body>
+    <div class="main_content">
+      <h1>Welcome!</h1>
+      <fieldset>
+        <legend>Register</legend>
+        <form class="register" action="/register" method="post">
+            {% csrf_token %}
+          <label for="name">
+            Name
+            <input type="text" name="name">
+          </label>
+          <label for="username">
+            Username
+            <input type="text" name="username">
+          </label>
+          <label for="password">
+            Password
+            <input type="password" name="password">
+          </label>
+          *Password should be at least 8 characters
+          <label for="password_confirmation">
+            Confirm Password
+            <input type="password" name="password_confirmation">
+          </label>
+          <button type="submit" name="button">Register</button>
+        </form>
+      </fieldset>
+      <fieldset>
+        <legend>Login</legend>
+        <form class="login" action="/login" method="POST">
+            {% csrf_token %}
+          <label for="username">
+            Username
+            <input type="username" name="username">
+          </label>
+          <label for="password">
+            Password
+            <input type="password" name="password">
+          </label>
+          <button type="submit" name="button">Login</button>
+        </form>
+      </fieldset>
+      {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <p></p>
+
+    </div>
+</body>
+</html>

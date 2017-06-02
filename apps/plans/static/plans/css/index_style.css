@@ -1,0 +1,54 @@
+*{
+    /*border: thin dotted red;*/
+}
+h2{
+    margin: 0px;
+}
+.headurl{
+    margin-left: 10px;
+}
+#header{
+    width:100%;
+    margin-bottom: 20px;
+}
+#welcome{
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+}
+#navigation{
+    width: 49%;
+    display: inline-block;
+    vertical-align: center;
+    text-align: right;
+}
+table{
+    border: thick solid black;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th{
+    border-right: solid thin black;
+    border-left: solid thin black;
+    padding: 3px;
+}
+td{
+    border-right: solid thin black;
+    border-left: solid thin black;
+    padding: 3px;
+}
+.header{
+    background-color: silver;
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+ul{
+    list-style:none;
+}
+label{
+    width: 125px;
+    display: inline-block;
+}
+textarea{
+    display: inline-block;
+    vertical-align: top;
+}

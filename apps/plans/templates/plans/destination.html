@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destination</title>
+    {% load staticfiles %}
+	  <link rel="stylesheet" href="{% static 'plans/css/index_style.css' %}">
+
+</head>
+<body>
+    <div id="header">
+        <div id="welcome">
+        </div>
+        <div id="navigation">
+            <a href="{% url 'plans:index' %}"class="headurl">Home</a>
+            <a href="{% url 'plans:logout' %}"class="headurl">Logout</a>
+        </div>
+        <hr>
+    </div>
+    <h1>{{ trip.destination }}</h1>
+    <p>Planned By: {{ trip.planner.name }}</p>
+    <p>Description: {{ trip.description }}</p>
+    <p>Travel Date From: {{ trip.start|date:"M j, Y" }}</p>
+    <p>Travel Date To: {{ trip.end|date:"M j, Y" }}</p>
+
+    <h1>Other users' joining the trip:</h1>
+    {% for user in other_users %}
+        <ul>
+            <li>{{ user.name }}</li>
+        </ul>
+    {% endfor %}
+</body>
+</html>

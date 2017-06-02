@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Traveler Dashboard</title>
+    {% load staticfiles %}
+	  <link rel="stylesheet" href="{% static 'plans/css/index_style.css' %}">
+
+</head>
+<body>
+    <div id="header">
+        <div id="welcome">
+            <h2>Hello, {{ user.name }}!</h2>
+        </div>
+        <div id="navigation">
+            <a href="{% url 'plans:logout' %}"class="headurl">Logout</a>
+        </div>
+        <hr>
+    </div>
+    Your Trip Schedules:</br>
+    <table>
+        <tr class="header">
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plans</th>
+        </tr>
+        {% for trip in user_trips %}
+            <tr>
+                
+                <td><a href="{% url 'plans:destination' id=trip.id %}">{{ trip.destination }}</a></td>
+                <td>{{ trip.start|date:"M j, Y" }}</td>
+                <td>{{ trip.created_at|date:"M j, Y" }}</td>
+                <td>{{ trip.description }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    Other Users' Travel Plans:</br>
+    <table>
+        <tr class="header">
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Do You Want to Join?</th>
+        </tr>
+        {% for trip in other_trips %}
+            <tr>
+                <td>{{ trip.planner.name }}</td>
+                <td><a href="{% url 'plans:destination' id=trip.id %}">{{ trip.destination }}</a></td>
+                <td>{{ trip.start|date:"M j, Y" }}</td>
+                <td>{{ trip.end|date:"M j, Y" }}</td>
+                <td><a href="{% url 'plans:join' id=trip.id %}">Join</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <a href="{% url 'plans:add' %}">Add Travel Plan</a>
+</body>
+</html>
